@@ -81,7 +81,7 @@ const upslotSim = {
       return value;
     }
     if (field === `maxTrials`) {
-      value = Math.min(Number(value), 1000000) || 1000000;
+      value = Math.max(10000, Math.min(Number(value), 1000000) || 1000000);
     }
     if (field.includes(`slotCount`) || field === `numberOfSSAs`) {
       value = Math.min(Number(value), 8) || 0;
