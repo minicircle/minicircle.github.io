@@ -15,11 +15,14 @@ const calculateUpslotCost = (
   numberOfSSAs,
   aidsUsed
 ) => {
+  let affixOperationCountTotal = 0; // running total of number of times we attempted to upslot our base weapon from x to (x + 1) slots
   let exCubesExpendedTotal = 0; // running total of ex-cubes spent
 
   for (let trial = 0; trial < trials; trial++) {
+    let affixOperationCount = 0;
     let slotCount = initialSlotCount;
     while (slotCount < goalSlotCount) {
+      affixOperationCount++;
       // simulate upslot attempts
       const successProbability =
         BASE_SUCCESS_PROBABILITIES[slotCount] +
@@ -34,11 +37,12 @@ const calculateUpslotCost = (
       }
 
       slotCount = newSlotCount;
+      affixOperationCountTotal += affixOperationCount;
       exCubesExpendedTotal += exCubeCost;
     }
   }
 
-  return { percentage, trials, exCubesExpendedTotal };
+  return { percentage, trials, affixOperationCountTotal, exCubesExpendedTotal };
 };
 
 onmessage = (e) => {

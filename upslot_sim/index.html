@@ -8,8 +8,17 @@
 
   <body>
     <h1>PSO2 Upslot Simulator</h1>
+    <h4>I miss boost week...</h4>
+    <div>Notes:
+      <br>
+      - I am not a programmer. The basic page structure/event handling is heavily derived from <a href="https://blead.github.io/pso2percent/">https://blead.github.io/pso2percent/</a>. The part of the code that I actually wrote is Not Great.
+      <br>
+      - This tool does not yet take into account affixing fees/item fodder prices.
+      <br>
+      - Feel free to report bugs to me on Discord @minicircle#6386.
+    </div>
     <div class="row">
-      <div class="column">Number of Trials (min = 1, max = 10000000):</div>
+      <div class="column">Number of Trials (min = 1, max = 1000000):</div>
       <input type="number" id="maxTrials" class="column" value="100000" min="1" max="1000000">
       <div class="column"></div>
     </div>
@@ -43,8 +52,8 @@
       <select id="upslot0" class="column">
         <option value="noAid" selected>No Aid</option>
         <option value="augAid10">Augmentation Aid +10%</option>
-        <option value="augAid30">Augmentation Aid +30%</option>
-        <option value="augAid40">Augmentation Aid +40%</option>
+        <option value="augAid30">Augmentation Aid +30% (20 cubes)</option>
+        <option value="augAid40">Augmentation Aid +40% (100 cubes)</option>
       </select>
       <div id="prob0" class="column"></div>
     </div>
@@ -53,8 +62,8 @@
       <select id="upslot1" class="column">
         <option value="noAid">No Aid</option>
         <option value="augAid10" selected>Augmentation Aid +10%</option>
-        <option value="augAid30">Augmentation Aid +30%</option>
-        <option value="augAid40">Augmentation Aid +40%</option>
+        <option value="augAid30">Augmentation Aid +30% (20 cubes)</option>
+        <option value="augAid40">Augmentation Aid +40% (100 cubes)</option>
       </select>
       <div id="prob1" class="column"></div>
     </div>
@@ -63,8 +72,8 @@
       <select id="upslot2" class="column">
         <option value="noAid">No Aid</option>
         <option value="augAid10" selected>Augmentation Aid +10%</option>
-        <option value="augAid30">Augmentation Aid +30%</option>
-        <option value="augAid40">Augmentation Aid +40%</option>
+        <option value="augAid30">Augmentation Aid +30% (20 cubes)</option>
+        <option value="augAid40">Augmentation Aid +40% (100 cubes)</option>
       </select>
       <div id="prob2" class="column"></div>
     </div>
@@ -73,8 +82,8 @@
       <select id="upslot3" class="column">
         <option value="noAid">No Aid</option>
         <option value="augAid10" selected>Augmentation Aid +10%</option>
-        <option value="augAid30">Augmentation Aid +30%</option>
-        <option value="augAid40">Augmentation Aid +40%</option>
+        <option value="augAid30">Augmentation Aid +30% (20 cubes)</option>
+        <option value="augAid40">Augmentation Aid +40% (100 cubes)</option>
       </select>
       <div id="prob3" class="column"></div>
     </div>
@@ -83,8 +92,8 @@
       <select id="upslot4" class="column">
         <option value="noAid">No Aid</option>
         <option value="augAid10">Augmentation Aid +10%</option>
-        <option value="augAid30" selected>Augmentation Aid +30%</option>
-        <option value="augAid40">Augmentation Aid +40%</option>
+        <option value="augAid30" selected>Augmentation Aid +30% (20 cubes)</option>
+        <option value="augAid40">Augmentation Aid +40% (100 cubes)</option>
       </select>
       <div id="prob4" class="column"></div>
     </div>
@@ -93,8 +102,8 @@
       <select id="upslot5" class="column">
         <option value="noAid">No Aid</option>
         <option value="augAid10">Augmentation Aid +10%</option>
-        <option value="augAid30" selected>Augmentation Aid +30%</option>
-        <option value="augAid40">Augmentation Aid +40%</option>
+        <option value="augAid30" selected>Augmentation Aid +30% (20 cubes)</option>
+        <option value="augAid40">Augmentation Aid +40% (100 cubes)</option>
       </select>
       <div id="prob5" class="column"></div>
     </div>
@@ -103,8 +112,8 @@
       <select id="upslot6" class="column">
         <option value="noAid">No Aid</option>
         <option value="augAid10">Augmentation Aid +10%</option>
-        <option value="augAid30">Augmentation Aid +30%</option>
-        <option value="augAid40" selected>Augmentation Aid +40%</option>
+        <option value="augAid30">Augmentation Aid +30% (20 cubes)</option>
+        <option value="augAid40" selected>Augmentation Aid +40% (100 cubes)</option>
       </select>
       <div id="prob6" class="column"></div>
     </div>
@@ -113,8 +122,8 @@
       <select id="upslot7" class="column">
         <option value="noAid">No Aid</option>
         <option value="augAid10">Augmentation Aid +10%</option>
-        <option value="augAid30">Augmentation Aid +30%</option>
-        <option value="augAid40" selected>Augmentation Aid +40%</option>
+        <option value="augAid30">Augmentation Aid +30% (20 cubes)</option>
+        <option value="augAid40" selected>Augmentation Aid +40% (100 cubes)</option>
       </select>
       <div id="prob7" class="column"></div>
     </div>

@@ -27,8 +27,8 @@ const upslotSim = {
   POSSIBLE_AUGMENTATION_AIDS: new Map([
     [`No Aid`, `noAid`],
     [`Augmentation Aid +10%`, `augAid10`],
-    [`Augmentation Aid +30%`, `augAid30`],
-    [`Augmentation Aid +40%`, `augAid40`],
+    [`Augmentation Aid +30% (20 cubes)`, `augAid30`],
+    [`Augmentation Aid +40% (100 cubes)`, `augAid40`],
   ]),
   workerPool: [
     new Worker(`./upslot_sim_worker.js`),
@@ -151,7 +151,10 @@ Boost Week Percentage: ${boostWeekPercentage}\n`);
       `Final results for simulating upslotting of ${initialSlotCount}s weapon with ${numberOfSSAs} SSAs to ${goalSlotCount}s:`,
     ];
 
-    const results = {};
+    const results = {
+      affixOperationCountTotal: 0,
+      exCubesExpendedTotal: 0,
+    };
 
     const processBatch = (trials, worker) => {
       const percentage = boostWeekPercentage;
@@ -165,23 +168,28 @@ Boost Week Percentage: ${boostWeekPercentage}\n`);
       });
       worker.onmessage = (e) => {
         const resultData = e.data;
-        if (!results[resultData.percentage]) {
-          results[resultData.percentage] = {
-            exCubesExpendedTotal: resultData.exCubesExpendedTotal,
-          };
+        if (!results.affixOperationCount && !results.exCubesExpendedTotal) {
+          resultData.affixOperationCountTotal =
+            resultData.affixOperationCountTotal;
+          results.exCubesExpendedTotal = resultData.exCubesExpendedTotal;
         } else {
-          results[resultData.percentage].exCubesExpendedTotal +=
-            resultData.exCubesExpendedTotal;
+          results.affixOperationCountTotal +=
+            resultData.affixOperationCountTotal;
+          results.exCubesExpendedTotal += resultData.exCubesExpendedTotal;
         }
         batchCount--;
 
         if (!batchCount) {
           finalResults.push(`(${percentage}% boost week)
-average ex-cubes expended: ${Math.floor(
-            results[percentage].exCubesExpendedTotal / maxTrials
+----------
+average number of affixing operations per trial: ${Math.round(
+            results.affixOperationCountTotal / maxTrials
           ).toLocaleString()}
-ex-cube meseta value (if 1 ex-cube = ${exCubeValue} meseta): ${Math.floor(
-            (results[percentage].exCubesExpendedTotal * exCubeValue) / maxTrials
+average ex-cubes expended: ${Math.round(
+            results.exCubesExpendedTotal / maxTrials
+          ).toLocaleString()}
+ex-cube meseta value (if 1 ex-cube = ${exCubeValue} meseta): ${Math.round(
+            (results.exCubesExpendedTotal * exCubeValue) / maxTrials
           ).toLocaleString()}`);
           finalResults.push(
             `Elapsed time: ${(Date.now() - startTime).toLocaleString()} ms`

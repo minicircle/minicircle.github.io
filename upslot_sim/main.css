@@ -3,6 +3,10 @@ body {
     Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
+h4 {
+  font-style: italic;
+}
+
 .row {
   display: flex;
   flex-wrap: wrap;
