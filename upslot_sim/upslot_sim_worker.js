@@ -1,4 +1,4 @@
-const aids = {
+const AIDS = {
   noAid: { boost: 0, exCubeCost: 0 },
   augAid10: { boost: 0.1, exCubeCost: 0 },
   augAid30: { boost: 0.3, exCubeCost: 20 },
@@ -24,8 +24,8 @@ const calculateUpslotCost = (
       const successProbability =
         BASE_SUCCESS_PROBABILITIES[slotCount] +
         percentage / 100 +
-        aids[aidsUsed[slotCount]].boost;
-      const exCubeCost = aids[aidsUsed[slotCount]].exCubeCost;
+        AIDS[aidsUsed[slotCount]].boost;
+      const exCubeCost = AIDS[aidsUsed[slotCount]].exCubeCost;
 
       let newSlotCount = numberOfSSAs; // all SSAs are guaranteed to be affixed
       // determine how many non-SSA augments were successfully affixed during this upslot attempt
