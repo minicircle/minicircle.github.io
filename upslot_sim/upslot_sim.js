@@ -95,15 +95,17 @@ const upslotSim = {
       }
       const slotNumber = field.replace(`upslot`, ``);
       upslotSim.state.aidsUsed[slotNumber] = value;
-      document.getElementById(`prob${slotNumber}`).innerText = `${Math.min(
-        100,
-        (upslotSim.BASE_SUCCESS_PROBABILITIES[slotNumber] +
-          Number(document.getElementById(`boostWeekPercentage`).value) / 100 +
-          upslotSim.AIDS[value].boost) *
-          100
-      ).toFixed()}%`;
     } else {
       upslotSim.state[field] = upslotSim.validateFieldValue(field, value);
+    }
+    for (let i = 0; i < 8; i++) {
+      document.getElementById(`prob${i}`).innerText = `${Math.min(
+        100,
+        (upslotSim.BASE_SUCCESS_PROBABILITIES[i] +
+          Number(document.getElementById(`boostWeekPercentage`).value) / 100 +
+          upslotSim.AIDS[document.getElementById(`upslot${i}`).value].boost) *
+          100
+      ).toFixed()}%`;
     }
   },
   renderResult: (text) => {
