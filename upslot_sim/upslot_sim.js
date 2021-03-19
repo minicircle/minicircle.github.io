@@ -29,6 +29,9 @@ const upslotSim = {
     [`Augmentation Aid +10%`, `augAid10`],
     [`Augmentation Aid +30% (20 cubes)`, `augAid30`],
     [`Augmentation Aid +40% (100 cubes)`, `augAid40`],
+    [`Augmentation Aid +45% (0 cubes, limited)`, `augAid45`],
+    [`Augmentation Aid +50% (0 cubes, limited)`, `augAid50`],
+    [`Augmentation Aid +60% (0 cubes, AC Scratch)`, `augAid60`],
   ]),
   workerPool: [
     new Worker(`./upslot_sim_worker.js`),
