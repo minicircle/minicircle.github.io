@@ -23,6 +23,9 @@ const upslotSim = {
     augAid10: { boost: 0.1, exCubeCost: 0 },
     augAid30: { boost: 0.3, exCubeCost: 20 },
     augAid40: { boost: 0.4, exCubeCost: 100 },
+    augAid45: { boost: 0.45, exCubeCost: 0 },
+    augAid50: { boost: 0.5, exCubeCost: 0 },
+    augAid60: { boost: 0.6, exCubeCost: 0 },
   },
   POSSIBLE_AUGMENTATION_AIDS: new Map([
     [`No Aid`, `noAid`],
